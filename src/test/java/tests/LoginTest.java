@@ -15,17 +15,15 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @DisplayName("Login Tests using Page Object Model")
-public class LoginTest {
-    static WebDriver driver;
+public class LoginTest extends BaseTest{
+    //static WebDriver driver;
     static WebDriverWait wait;
     static LoginPage loginPage;
 
     @BeforeAll
-    static void setUp() {
-        driver = DriverFactory.createDriver();
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        driver.manage().window().maximize();
+    static void initPage() {
         loginPage = new LoginPage(driver);
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
     @Test
@@ -96,4 +94,3 @@ public class LoginTest {
         driver.quit();
     }
 }
-
